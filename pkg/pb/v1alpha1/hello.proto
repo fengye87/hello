@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package fengye87.hello.v1alpha1;
+
+import "google/api/annotations.proto";
+
+option go_package = "github.com/fengye87/hello/v1alpha1";
+
+service Hello {
+    rpc Greet(GreetRequest) returns (GreetReply) {
+        option (google.api.http) = {
+            post: "/hello/v1alpha1/greet"
+            body: "*"
+        };
+    }
+}
+
+message GreetRequest {
+    bool long = 1;
+}
+
+message GreetReply {
+    string message = 1;
+}

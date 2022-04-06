@@ -1,0 +1,19 @@
+apiVersion: skaffold/v2beta28
+kind: Config
+metadata:
+  name: hello
+build:
+  local:
+    useBuildkit: true
+  artifacts:
+    - image: hello
+      docker:
+        dockerfile: build/image/Dockerfile.hello
+    - image: helloctl
+      docker:
+        dockerfile: build/image/Dockerfile.helloctl
+deploy:
+  kubectl:
+    manifests:
+      - deploy/hello.yaml
+      - deploy/helloctl.yaml

@@ -1,0 +1,6 @@
+[Service]
+ExecStart=/usr/bin/hello
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

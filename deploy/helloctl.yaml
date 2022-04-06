@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: helloctl
+spec:
+  selector:
+    matchLabels:
+      name: helloctl
+  template:
+    metadata:
+      labels:
+        name: helloctl
+    spec:
+      containers:
+        - name: helloctl
+          image: helloctl
+          env:
+            - name: NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+          command:
+            - sleep
+            - infinity
